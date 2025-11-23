@@ -10,16 +10,11 @@ uses
 
 type
   Tfrm_SelecionarProduto = class(TForm)
-    qry_Produtos: TIBQuery;
-    dts_Produtos: TDataSource;
     dbg_Produtos: TDBGrid;
     pnlPrincipal: TPanel;
     pnl_Voltar: TPanel;
     pnl_BtnAdicionar: TPanel;
     Label2: TLabel;
-    qry_ProdutosCODIGO: TIntegerField;
-    qry_ProdutosDESCRICAO: TIBStringField;
-    qry_ProdutosVALOR: TIBBCDField;
     procedure pnl_VoltarClick(Sender: TObject);
     procedure pnl_BtnAdicionarClick(Sender: TObject);
   private
@@ -42,12 +37,7 @@ var
   CodigoProduto: Integer;
   DescricaoProduto: String;
 begin
-  if dbg_Produtos.SelectedRows.Count > 0 then
-  begin
-    CodigoProduto := qry_Produtos.FieldByName('CODIGO').AsInteger;
-    DescricaoProduto := qry_Produtos.FieldByName('DESCRICAO').AsString;
-  end;
-
+ //
 end;
 
 procedure Tfrm_SelecionarProduto.pnl_BtnAdicionarClick(Sender: TObject);

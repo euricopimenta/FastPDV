@@ -10,11 +10,11 @@ type TVenda = class
   private
     FValorBruto: Currency;
     FValorDesconto: Currency;
-    FCancelado: Boolean;
+    FCancelado: Integer;
     FCodigo: integer;
     FValorLiquido: Currency;
     FData: TDate;
-    procedure SetCancelado(const Value: Boolean);
+    procedure SetCancelado(const Value: Integer);
     procedure SetCodigo(const Value: integer);
     procedure SetData(const Value: TDate);
     procedure SetValorBruto(const Value: Currency);
@@ -27,7 +27,7 @@ type TVenda = class
     property ValorBruto : Currency read FValorBruto write SetValorBruto;
     property ValorDesconto : Currency read FValorDesconto write SetValorDesconto;
     property ValorLiquido : Currency read FValorLiquido write SetValorLiquido;
-    property Cancelado : Boolean read FCancelado write SetCancelado;
+    property Cancelado : Integer read FCancelado write SetCancelado;
 
 
     constructor Create;
@@ -41,10 +41,10 @@ implementation
 
 constructor TVenda.Create;
 begin
-
+  //
 end;
 
-procedure TVenda.SetCancelado(const Value: Boolean);
+procedure TVenda.SetCancelado(const Value: Integer);
 begin
   FCancelado := Value;
 end;
@@ -76,7 +76,7 @@ end;
 
 destructor TVenda.Destroy;
 begin
-
+  //
   inherited;
 end;
 

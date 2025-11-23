@@ -97,6 +97,12 @@
             <Form>frm_SelecionarProduto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\Model\DAO\DAO.Produto.pas"/>
+        <DCCReference Include="src\Controller\Controller.Produto.pas"/>
+        <DCCReference Include="src\Model\DAO\DAO.Venda.Item.pas"/>
+        <DCCReference Include="src\Model\DAO\DAO.Venda.pas"/>
+        <DCCReference Include="src\Controller\Controller.Venda.Item.pas"/>
+        <DCCReference Include="src\Controller\Controller.Venda.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

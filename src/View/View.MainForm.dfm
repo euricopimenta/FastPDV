@@ -3,7 +3,7 @@ object FastPDV: TFastPDV
   Top = 0
   Caption = 'FastPDV'
   ClientHeight = 840
-  ClientWidth = 1094
+  ClientWidth = 1112
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,7 +16,7 @@ object FastPDV: TFastPDV
   object pnlMainHead: TPanel
     Left = 0
     Top = 0
-    Width = 1094
+    Width = 1112
     Height = 57
     Align = alTop
     BevelEdges = []
@@ -96,7 +96,7 @@ object FastPDV: TFastPDV
       Layout = tlCenter
     end
     object img_MenuOptions: TImage
-      Left = 1045
+      Left = 1063
       Top = 0
       Width = 49
       Height = 57
@@ -138,7 +138,7 @@ object FastPDV: TFastPDV
   object pnlMainBottom: TPanel
     Left = 0
     Top = 57
-    Width = 1094
+    Width = 1112
     Height = 715
     Align = alClient
     BevelOuter = bvNone
@@ -146,7 +146,7 @@ object FastPDV: TFastPDV
     ParentBackground = False
     TabOrder = 1
     DesignSize = (
-      1094
+      1112
       715)
     object Label2: TLabel
       Left = 24
@@ -175,7 +175,7 @@ object FastPDV: TFastPDV
         Top = 17
         Width = 632
         Height = 492
-        DataSource = dts_VendaItens
+        TabStop = False
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -219,6 +219,7 @@ object FastPDV: TFastPDV
           Top = 23
           Width = 398
           Height = 29
+          TabStop = False
           Anchors = [akLeft, akBottom]
           TabOrder = 0
         end
@@ -282,7 +283,7 @@ object FastPDV: TFastPDV
         end
         object edt_CodigoProduto: TEdit
           Left = 16
-          Top = 24
+          Top = 23
           Width = 74
           Height = 29
           Alignment = taCenter
@@ -419,7 +420,7 @@ object FastPDV: TFastPDV
   object pnlPrincipal: TPanel
     Left = 0
     Top = 772
-    Width = 1094
+    Width = 1112
     Height = 68
     Align = alBottom
     BevelEdges = []
@@ -450,53 +451,5 @@ object FastPDV: TFastPDV
       ParentFont = False
       TabOrder = 0
     end
-  end
-  object dts_VendaItens: TDataSource
-    DataSet = IBQuery2
-    Left = 560
-    Top = 65
-  end
-  object IBQuery1: TIBQuery
-    Database = DM_InterBase.IBDatabase1
-    Transaction = DM_InterBase.IBTransaction1
-    BufferChunks = 1000
-    CachedUpdates = False
-    DataSource = dts_VendaItens
-    ParamCheck = True
-    Left = 632
-    Top = 65
-  end
-  object IBQuery2: TIBQuery
-    Database = DM_InterBase.IBDatabase1
-    Transaction = DM_InterBase.IBTransaction1
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
-    SQL.Strings = (
-      'Select'
-      '    cp.descricao,'
-      '    vi.qtde,'
-      '    vi.valor,'
-      '    vi.valor_subtotal'
-      'from vendaitem vi'
-      'left join cadproduto cp on cp.codigo = vi.codigo_produto'
-      'where vi.codigo_venda = :PCodVenda')
-    Left = 424
-    Top = 65
-    ParamData = <
-      item
-        DataType = ftUnknown
-        Name = 'PCodVenda'
-        ParamType = ptUnknown
-      end>
-  end
-  object IBQueryProduto: TIBQuery
-    Database = DM_InterBase.IBDatabase1
-    Transaction = DM_InterBase.IBTransaction1
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
-    Left = 320
-    Top = 704
   end
 end

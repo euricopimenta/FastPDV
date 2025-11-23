@@ -34,7 +34,6 @@ object frm_SelecionarProduto: Tfrm_SelecionarProduto
     Height = 474
     Cursor = crHandPoint
     BorderStyle = bsNone
-    DataSource = dts_Produtos
     DrawingStyle = gdsGradient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -61,8 +60,6 @@ object frm_SelecionarProduto: Tfrm_SelecionarProduto
     Color = 4144699
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 548
-    ExplicitWidth = 702
     DesignSize = (
       696
       68)
@@ -115,48 +112,5 @@ object frm_SelecionarProduto: Tfrm_SelecionarProduto
       TabOrder = 1
       OnClick = pnl_BtnAdicionarClick
     end
-  end
-  object qry_Produtos: TIBQuery
-    Database = DM_InterBase.IBDatabase1
-    Transaction = DM_InterBase.IBTransaction1
-    ForcedRefresh = True
-    Active = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = False
-    SQL.Strings = (
-      'SELECT'
-      '    p.codigo,'
-      '    p.descricao,'
-      '    p.valor'
-      'FROM cadproduto p')
-    Left = 240
-    Top = 536
-    object qry_ProdutosCODIGO: TIntegerField
-      DisplayWidth = 10
-      FieldName = 'CODIGO'
-      Origin = '"CADPRODUTO"."CODIGO"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object qry_ProdutosDESCRICAO: TIBStringField
-      DisplayWidth = 35
-      FieldName = 'DESCRICAO'
-      Origin = '"CADPRODUTO"."DESCRICAO"'
-      Size = 40
-    end
-    object qry_ProdutosVALOR: TIBBCDField
-      DisplayWidth = 19
-      FieldName = 'VALOR'
-      Origin = '"CADPRODUTO"."VALOR"'
-      currency = True
-      Precision = 18
-      Size = 2
-    end
-  end
-  object dts_Produtos: TDataSource
-    DataSet = qry_Produtos
-    Left = 160
-    Top = 536
   end
 end

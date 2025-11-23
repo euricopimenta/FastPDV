@@ -1,4 +1,4 @@
-unit View.MainForm;
+ï»¿unit View.MainForm;
 
 interface
 
@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.StdCtrls, Vcl.ExtCtrls,
   Vcl.Buttons, Vcl.ImgList, Vcl.Imaging.pngimage, Vcl.Grids, Vcl.DBGrids,
-  Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, Model.DataModule, View.Busca.Produtos, Model.Produto;
+  Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, Model.DataModule, View.Busca.Produtos, Model.Produto,
+  Datasnap.DBClient;
 
 type
   TFastPDV = class(TForm)
@@ -20,9 +21,7 @@ type
     pnl_ClientVendaItens: TPanel;
     pnl_ClientVendaTotal: TPanel;
     DBGrid_VendasItem: TDBGrid;
-    dts_VendaItens: TDataSource;
     lbl_ResumoDaVenda: TLabel;
-    IBQuery1: TIBQuery;
     Label1: TLabel;
     lbl_ValorTotal: TLabel;
     Label2: TLabel;
@@ -38,8 +37,6 @@ type
     edt_CodigoProduto: TEdit;
     Label6: TLabel;
     pnl_BuscarProduto: TPanel;
-    IBQuery2: TIBQuery;
-    IBQueryProduto: TIBQuery;
     procedure pnl_BuscarProdutoClick(Sender: TObject);
     procedure edt_CodigoProdutoExit(Sender: TObject);
    
@@ -65,36 +62,6 @@ if Trim(edt_CodigoProduto.Text) = '' then
     edt_DescricaoProduto.Text := '';
     Exit;
   end;
-try
-    LCodigoProduto := StrToInt(edt_CodigoProduto.Text);
-
-    IBQueryProduto.Close;
-    IBQueryProduto.SQL.Text := 'SELECT DESCRICAO, VALOR FROM CADPRODUTO WHERE CODIGO = :PCodigo';
-    IBQueryProduto.ParamByName('PCodigo').AsInteger := LCodigoProduto;
-    IBQueryProduto.Open;
-
-    if not IBQueryProduto.IsEmpty then
-    begin
-      edt_DescricaoProduto.Text := IBQueryProduto.FieldByName('DESCRICAO').AsString;
-    end
-    else
-    begin
-      edt_CodigoProduto.Text := 'PRODUTO NÃO CADASTRADO';
-      ShowMessage('Produto de código ' + IntToStr(LCodigoProduto) + ' não encontrado!');
-      edt_CodigoProduto.SetFocus;
-    end;
-
-  except
-    on E: EConvertError do
-    begin
-      edt_DescricaoProduto.Text := 'CÓDIGO INVÁLIDO!';
-      ShowMessage('O código do produto deve ser um número válido.');
-      edt_CodigoProduto.SetFocus;
-    end;
-    on E: Exception do
-      ShowMessage('Erro ao acessar o banco de dados: ' + E.Message);
-  end;
-
 end;
 
 procedure TFastPDV.pnl_BuscarProdutoClick(Sender: TObject);

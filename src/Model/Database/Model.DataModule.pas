@@ -8,19 +8,19 @@ uses
 
 type
   TDM_InterBase = class(TDataModule)
-    IBDatabase1: TIBDatabase;
-    IBTransaction1: TIBTransaction;
+    IBDatabase: TIBDatabase;
+    IBTransaction: TIBTransaction;
     IBQuery: TIBQuery;
 
   private
     { Private declarations }
   public
-    { Public declarations }
+
 
   end;
 
 var
-  DM_InterBase: TDM_InterBase;
+  DMInterbase : TDM_InterBase;
 
 
 implementation
