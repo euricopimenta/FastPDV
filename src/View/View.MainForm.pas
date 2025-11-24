@@ -37,11 +37,29 @@ type
     edt_CodigoProduto: TEdit;
     Label6: TLabel;
     pnl_BuscarProduto: TPanel;
+    Panel3: TPanel;
+    pnlBtnDesconto: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    Panel5: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    cdsVirtualDesconto: TClientDataSet;
+    cdsVirtualDescontocdsVirtualDesconto_Cod: TIntegerField;
+    cdsVirtualDescontocdsVirtualDesconto_Descricao: TStringField;
+    cdsVirtualDescontocdsVirtualDesconto_PercentualDesconto: TIntegerField;
+    DataSource1: TDataSource;
     procedure pnl_BuscarProdutoClick(Sender: TObject);
     procedure edt_CodigoProdutoExit(Sender: TObject);
-   
+
+
   private
     { Private declarations }
+    procedure AdicionarDesconto;
   public
     { Public declarations }
   end;
@@ -52,6 +70,17 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFastPDV.AdicionarDesconto;
+begin
+  cdsVirtualDesconto := TClientDataSet.Create(nil);
+  try
+    cdsVirtualDesconto.Active := True;
+
+  finally
+    cdsVirtualDesconto.Free;
+  end;
+end;
 
 procedure TFastPDV.edt_CodigoProdutoExit(Sender: TObject);
 var
