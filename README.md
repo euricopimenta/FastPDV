@@ -1,1 +1,5 @@
-<img width="1917" height="1078" alt="Captura de tela 2025-11-21 010104" src="https://github.com/user-attachments/assets/480304fd-1bb8-4e80-b6d7-1a1c0e5c7685" />
+<img width="1121" height="883" alt="image" src="https://github.com/user-attachments/assets/da80d0e9-8eae-4067-aa27-4d56395f3ed4" />
+
+
+
+
