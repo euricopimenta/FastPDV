@@ -13,6 +13,7 @@ type TDAOVenda = Class
   private
   Public
     procedure Inserir(Venda: TVenda);
+    function ProximoCodVenda : Integer;
 
 End;
 
@@ -48,6 +49,22 @@ begin
   finally
     LQry.Free;
   end;
+end;
+
+function TDAOVenda.ProximoCodVenda: Integer;
+var
+  LQry: TIBQuery;
+begin
+  LQry := TIBQuery.Create(nil);
+  try
+    LQry.Database := Model.Datamodule.DMInterbase.IBDatabase;
+    LQry.SQL.Text := 'Select Max(CODIGO)+1 as ID from VENDA';
+    LQry.Open;
+    Result := LQry.FieldByName('ID').AsInteger;
+  finally
+    LQry.Free;
+  end;
+
 end;
 
 end.

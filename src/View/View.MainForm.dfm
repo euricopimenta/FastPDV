@@ -11,6 +11,8 @@ object FastPDV: TFastPDV
   Font.Name = 'Segoe UI'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 21
   object pnlMainHead: TPanel
@@ -176,7 +178,6 @@ object FastPDV: TFastPDV
         Width = 632
         Height = 492
         TabStop = False
-        DataSource = DataSource1
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -757,6 +758,15 @@ object FastPDV: TFastPDV
         end
       end
     end
+    object Button1: TButton
+      Left = 632
+      Top = 6
+      Width = 75
+      Height = 37
+      Caption = 'Button1'
+      TabOrder = 2
+      OnClick = Button1Click
+    end
   end
   object pnlPrincipal: TPanel
     Left = 0
@@ -793,7 +803,7 @@ object FastPDV: TFastPDV
       TabOrder = 0
     end
   end
-  object cdsVirtualDesconto: TClientDataSet
+  object cdsDesconto: TClientDataSet
     PersistDataPacket.Data = {
       C60000009619E0BD010000001800000003000000000003000000C60016636473
       5669727475616C446573636F6E746F5F436F6404000100020000001C63647356
@@ -824,27 +834,50 @@ object FastPDV: TFastPDV
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    Left = 552
+    Left = 1000
     Top = 65
-    object cdsVirtualDescontocdsVirtualDesconto_Cod: TIntegerField
+    object cdsDescontocdsVirtualDesconto_Cod: TIntegerField
       DisplayLabel = 'Codigo'
       FieldName = 'cdsVirtualDesconto_Cod'
       ReadOnly = True
     end
-    object cdsVirtualDescontocdsVirtualDesconto_Descricao: TStringField
+    object cdsDescontocdsVirtualDesconto_Descricao: TStringField
       DisplayLabel = 'Descricao'
       FieldName = 'cdsVirtualDesconto_Descricao'
       ReadOnly = True
     end
-    object cdsVirtualDescontocdsVirtualDesconto_PercentualDesconto: TIntegerField
+    object cdsDescontocdsVirtualDesconto_PercentualDesconto: TIntegerField
       DisplayLabel = 'Percentual'
       FieldName = 'cdsVirtualDesconto_PercentualDesconto'
       ReadOnly = True
     end
   end
-  object DataSource1: TDataSource
-    DataSet = cdsVirtualDesconto
-    Left = 608
+  object dtsDesconto: TDataSource
+    DataSet = cdsDesconto
+    Left = 1040
     Top = 65
+  end
+  object cdsTemporario: TClientDataSet
+    PersistDataPacket.Data = {
+      570000009619E0BD01000000180000000400000000000300000057000B434F44
+      5F50524F4455544F040001000000000004515444450400010000000000055641
+      4C4F52080004000000000005544F54414C08000400000000000000}
+    Active = True
+    Aggregates = <>
+    Params = <>
+    Left = 488
+    Top = 65
+    object cdsTemporarioCOD_PRODUTO: TIntegerField
+      FieldName = 'COD_PRODUTO'
+    end
+    object cdsTemporarioQTDE: TIntegerField
+      FieldName = 'QTDE'
+    end
+    object cdsTemporarioVALOR: TFloatField
+      FieldName = 'VALOR'
+    end
+    object cdsTemporarioTOTAL: TFloatField
+      FieldName = 'TOTAL'
+    end
   end
 end

@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.StdCtrls, Vcl.ExtCtrls,
   Vcl.Buttons, Vcl.ImgList, Vcl.Imaging.pngimage, Vcl.Grids, Vcl.DBGrids,
   Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, Model.DataModule, View.Busca.Produtos, Model.Produto,
-  Datasnap.DBClient;
+  Datasnap.DBClient, Controller.Venda;
 
 type
   TFastPDV = class(TForm)
@@ -48,38 +48,44 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
-    cdsVirtualDesconto: TClientDataSet;
-    cdsVirtualDescontocdsVirtualDesconto_Cod: TIntegerField;
-    cdsVirtualDescontocdsVirtualDesconto_Descricao: TStringField;
-    cdsVirtualDescontocdsVirtualDesconto_PercentualDesconto: TIntegerField;
-    DataSource1: TDataSource;
+    cdsDesconto: TClientDataSet;
+    cdsDescontocdsVirtualDesconto_Cod: TIntegerField;
+    cdsDescontocdsVirtualDesconto_Descricao: TStringField;
+    cdsDescontocdsVirtualDesconto_PercentualDesconto: TIntegerField;
+    dtsDesconto: TDataSource;
+    cdsTemporario: TClientDataSet;
+    cdsTemporarioCOD_PRODUTO: TIntegerField;
+    cdsTemporarioQTDE: TIntegerField;
+    cdsTemporarioVALOR: TFloatField;
+    cdsTemporarioTOTAL: TFloatField;
+    Button1: TButton;
     procedure pnl_BuscarProdutoClick(Sender: TObject);
     procedure edt_CodigoProdutoExit(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
     { Private declarations }
-    procedure AdicionarDesconto;
+
+
   public
     { Public declarations }
   end;
 
 var
   FastPDV: TFastPDV;
+  Venda : TVendaController;
 
 implementation
 
 {$R *.dfm}
 
-procedure TFastPDV.AdicionarDesconto;
-begin
-  cdsVirtualDesconto := TClientDataSet.Create(nil);
-  try
-    cdsVirtualDesconto.Active := True;
 
-  finally
-    cdsVirtualDesconto.Free;
-  end;
+procedure TFastPDV.Button1Click(Sender: TObject);
+begin
+  ShowMessage('Proximo CodigoVenda: '+ IntToStr(Venda.ProximoCodVenda));
 end;
 
 procedure TFastPDV.edt_CodigoProdutoExit(Sender: TObject);
@@ -91,6 +97,16 @@ if Trim(edt_CodigoProduto.Text) = '' then
     edt_DescricaoProduto.Text := '';
     Exit;
   end;
+end;
+
+procedure TFastPDV.FormCreate(Sender: TObject);
+begin
+  Venda := TVendaController.Create;
+end;
+
+procedure TFastPDV.FormDestroy(Sender: TObject);
+begin
+  Venda.Free;
 end;
 
 procedure TFastPDV.pnl_BuscarProdutoClick(Sender: TObject);

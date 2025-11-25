@@ -17,6 +17,8 @@ type
 
     procedure CriarVenda(AData: TDateTime;
       ATotal, ADesconto, AAcrescimo: Currency; ACancelado: Integer);
+    function ProximoCodVenda : Integer;
+
   end;
 
 implementation
@@ -30,6 +32,11 @@ destructor TVendaController.Destroy;
 begin
   FDAO.Free;
   inherited;
+end;
+
+function TVendaController.ProximoCodVenda: Integer;
+begin
+  Result := FDAO.ProximoCodVenda;
 end;
 
 procedure TVendaController.CriarVenda(AData: TDateTime;
