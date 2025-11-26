@@ -43,7 +43,7 @@ begin
   try
     Qry.Database := FConn;
 
-    Qry.SQL.Text := 'SELECT Codigo, Descricao, Valor WHERE Codigo = :COD';
+    Qry.SQL.Text := 'SELECT Codigo, Descricao, Valor FROM CADPRODUTO WHERE Codigo = :COD';
     Qry.ParamByName('COD').AsInteger := ACodigo;
     Qry.Open;
 
@@ -70,7 +70,7 @@ begin
   Qry.Database := FConn;
   try
     Qry.Database := Model.DataModule.DMInterbase.IBDatabase;
-    Qry.SQL.Text := 'SELECT Codigo, Descricao, Valor FROM PRODUTO';
+    Qry.SQL.Text := 'SELECT Codigo, Descricao, Valor FROM CADPRODUTO';
     Qry.Open;
 
     while not Qry.Eof do

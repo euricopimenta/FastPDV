@@ -12,6 +12,7 @@ object frm_SelecionarProduto: Tfrm_SelecionarProduto
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel

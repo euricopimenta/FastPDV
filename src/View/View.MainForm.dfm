@@ -759,7 +759,7 @@ object FastPDV: TFastPDV
       end
     end
     object Button1: TButton
-      Left = 632
+      Left = 614
       Top = 6
       Width = 75
       Height = 37
