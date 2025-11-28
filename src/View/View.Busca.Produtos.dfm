@@ -1,4 +1,4 @@
-object frm_SelecionarProduto: Tfrm_SelecionarProduto
+object GridListProdutos: TGridListProdutos
   Left = 0
   Top = 0
   BorderStyle = bsDialog
@@ -12,7 +12,8 @@ object frm_SelecionarProduto: Tfrm_SelecionarProduto
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
-  OnCreate = FormCreate
+  OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel

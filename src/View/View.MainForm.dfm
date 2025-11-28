@@ -3,7 +3,7 @@ object FastPDV: TFastPDV
   Top = 0
   Caption = 'FastPDV'
   ClientHeight = 840
-  ClientWidth = 1112
+  ClientWidth = 1292
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,7 +18,7 @@ object FastPDV: TFastPDV
   object pnlMainHead: TPanel
     Left = 0
     Top = 0
-    Width = 1112
+    Width = 1292
     Height = 57
     Align = alTop
     BevelEdges = []
@@ -26,6 +26,7 @@ object FastPDV: TFastPDV
     Color = 4144699
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1112
     object img_HeadLogo: TImage
       Left = 0
       Top = 0
@@ -98,7 +99,7 @@ object FastPDV: TFastPDV
       Layout = tlCenter
     end
     object img_MenuOptions: TImage
-      Left = 1063
+      Left = 1243
       Top = 0
       Width = 49
       Height = 57
@@ -140,15 +141,16 @@ object FastPDV: TFastPDV
   object pnlMainBottom: TPanel
     Left = 0
     Top = 57
-    Width = 1112
+    Width = 1292
     Height = 715
     Align = alClient
     BevelOuter = bvNone
     Color = 15724527
     ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 1112
     DesignSize = (
-      1112
+      1292
       715)
     object Label2: TLabel
       Left = 24
@@ -166,18 +168,22 @@ object FastPDV: TFastPDV
     object pnl_ClientVendaItens: TPanel
       Left = 24
       Top = 49
-      Width = 666
+      Width = 841
       Height = 648
       Anchors = [akLeft, akTop, akBottom]
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
+      DesignSize = (
+        841
+        648)
       object DBGrid_VendasItem: TDBGrid
         Left = 17
         Top = 17
-        Width = 632
+        Width = 808
         Height = 492
         TabStop = False
+        Anchors = [akLeft, akTop, akBottom]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -204,12 +210,13 @@ object FastPDV: TFastPDV
       object pnl_ProdutosVenda: TPanel
         Left = 1
         Top = 528
-        Width = 664
+        Width = 839
         Height = 119
         Align = alBottom
         TabOrder = 1
+        ExplicitWidth = 664
         DesignSize = (
-          664
+          839
           119)
         object Label4: TLabel
           Left = 96
@@ -219,7 +226,7 @@ object FastPDV: TFastPDV
           Caption = 'Produto'
         end
         object Label5: TLabel
-          Left = 564
+          Left = 740
           Top = 0
           Width = 81
           Height = 21
@@ -232,17 +239,24 @@ object FastPDV: TFastPDV
           Height = 21
           Caption = 'Codigo'
         end
+        object Label10: TLabel
+          Left = 566
+          Top = 0
+          Width = 36
+          Height = 21
+          Caption = 'Valor'
+        end
         object edt_DescricaoProduto: TEdit
           Left = 96
           Top = 23
-          Width = 398
+          Width = 466
           Height = 29
           TabStop = False
           Anchors = [akLeft, akBottom]
           TabOrder = 0
         end
         object edt_Quantidade: TEdit
-          Left = 506
+          Left = 682
           Top = 23
           Width = 139
           Height = 29
@@ -253,7 +267,7 @@ object FastPDV: TFastPDV
         end
         object pnl_btnRemover: TPanel
           AlignWithMargins = True
-          Left = 355
+          Left = 531
           Top = 74
           Width = 139
           Height = 37
@@ -277,7 +291,7 @@ object FastPDV: TFastPDV
         end
         object pnl_BtnAdicionar: TPanel
           AlignWithMargins = True
-          Left = 506
+          Left = 682
           Top = 74
           Width = 139
           Height = 37
@@ -335,10 +349,20 @@ object FastPDV: TFastPDV
           TabOrder = 5
           OnClick = pnl_BuscarProdutoClick
         end
+        object edt_ValorProduto: TEdit
+          Left = 568
+          Top = 23
+          Width = 102
+          Height = 29
+          Alignment = taCenter
+          Anchors = [akLeft, akBottom]
+          TabOrder = 6
+          OnExit = edt_CodigoProdutoExit
+        end
       end
     end
     object pnl_ClientVendaTotal: TPanel
-      Left = 711
+      Left = 903
       Top = 49
       Width = 370
       Height = 648
@@ -771,7 +795,7 @@ object FastPDV: TFastPDV
   object pnlPrincipal: TPanel
     Left = 0
     Top = 772
-    Width = 1112
+    Width = 1292
     Height = 68
     Align = alBottom
     BevelEdges = []
@@ -779,6 +803,7 @@ object FastPDV: TFastPDV
     Color = 4144699
     ParentBackground = False
     TabOrder = 2
+    ExplicitWidth = 1112
     object Panel1: TPanel
       AlignWithMargins = True
       Left = 24

@@ -15,6 +15,7 @@ private
     function Listar: TList<TProduto>;
     function Buscar(ACod: Integer): TProduto;
     function BuscarTodos: TClientDataSet;
+    destructor Destroy ; Override;
 
 end;
 
@@ -30,32 +31,38 @@ function TControllerProduto.BuscarTodos: TClientDataSet;
 var
   Lista: TList<TProduto>;
   Produto: TProduto;
-  cds: TClientDataSet;
+  VirtualDataSet: TClientDataSet;
 begin
   Lista := FDAO.BuscarTodos;
 
-  cds := TClientDataSet.Create(nil);
-  cds.FieldDefs.Add('Codigo', ftInteger);
-  cds.FieldDefs.Add('Descricao', ftString, 100);
-  cds.FieldDefs.Add('Valor', ftFloat);
-  cds.CreateDataSet;
+  VirtualDataSet := TClientDataSet.Create(nil);
+  VirtualDataSet.FieldDefs.Add('Codigo', ftInteger);
+  VirtualDataSet.FieldDefs.Add('Descricao', ftString, 40);
+  VirtualDataSet.FieldDefs.Add('Valor', ftFloat);
+  VirtualDataSet.CreateDataSet;
 
   for Produto in Lista do
   begin
-    cds.Append;
-    cds.FieldByName('Codigo').AsInteger := Produto.Codigo;
-    cds.FieldByName('Descricao').AsString := Produto.Descricao;
-    cds.FieldByName('Valor').AsFloat := Produto.Valor;
-    cds.Post;
+    VirtualDataSet.Append;
+    VirtualDataSet.FieldByName('Codigo').AsInteger := Produto.Codigo;
+    VirtualDataSet.FieldByName('Descricao').AsString := Produto.Descricao;
+    VirtualDataSet.FieldByName('Valor').AsFloat := Produto.Valor;
+    VirtualDataSet.Post;
   end;
 
-  Result := cds;
+  Result := VirtualDataSet;
 
 end;
 
 constructor TControllerProduto.Create;
 begin
   FDAO := TDAOProduto.Create;
+end;
+
+destructor TControllerProduto.Destroy;
+begin
+   FDAO.Free;
+  inherited;
 end;
 
 function TControllerProduto.Buscar(ACod: Integer): TProduto;

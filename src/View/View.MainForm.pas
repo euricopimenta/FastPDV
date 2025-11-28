@@ -59,6 +59,8 @@ type
     cdsTemporarioVALOR: TFloatField;
     cdsTemporarioTOTAL: TFloatField;
     Button1: TButton;
+    edt_ValorProduto: TEdit;
+    Label10: TLabel;
     procedure pnl_BuscarProdutoClick(Sender: TObject);
     procedure edt_CodigoProdutoExit(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -110,8 +112,21 @@ begin
 end;
 
 procedure TFastPDV.pnl_BuscarProdutoClick(Sender: TObject);
+var
+  GridProdutos : TGridListProdutos;
 begin
-  View.Busca.Produtos.frm_SelecionarProduto.ShowModal;
+  GridProdutos := TGridListProdutos.Create(Self);
+  Try
+    if GridProdutos.ShowModal = mrOk then
+    begin
+      edt_CodigoProduto.Text := GridProdutos.CodigoSelecionado.ToString;
+      edt_DescricaoProduto.Text := GridProdutos.DescricaoSelecionada;
+      edt_ValorProduto.Text := CurrToStr(GridProdutos.ValorSelecionado);
+    end;
+  Finally
+    GridProdutos.Free;
+  End;
+
 end;
 
 
